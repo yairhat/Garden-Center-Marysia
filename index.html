@@ -1563,19 +1563,18 @@
       </article>
 
       <!-- Tarjeta 6 -->
-      <article class="product-card">
+      <article class="product-card clickable-card" onclick="openProductModal('modalMedicinales')" tabindex="0" role="button" aria-label="Ver más información sobre Plantas Medicinales y Aromáticas" onkeypress="if(event.key==='Enter')openProductModal('modalMedicinales')">
         <div class="product-img">
           <img src="asesorias.jpeg"
                alt="Imagen" loading="lazy"/>
-          <span class="product-cat">Incluido</span>
         </div>
         <div class="product-body">
           <h3>Plantas Medicinales y Aromáticas</h3>
           <p>Plantas medicinales y aromáticas ideales para cocina, bienestar y huertos caseros.</p>
-          <a href="https://wa.me/525951041204?text=Hola!%20Necesito%20asesor%C3%ADa%20para%20elegir%20las%20plantas%20correctas%20para%20mi%20espacio." target="_blank" rel="noopener noreferrer" class="product-link" aria-label="Solicitar asesoría por WhatsApp">
-            Pedir asesor&iacute;a
+          <span class="product-link">
+            Ver m&aacute;s detalles
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          </span>
         </div>
       </article>
 
@@ -1833,6 +1832,18 @@
     <h3 class="product-modal-title" id="modalJardineriaTitle">Jardinería y Paisajismo</h3>
     <div class="product-modal-body">
       <p>Explora nuestra variedad de palmeras, arbustos, setos y plantas cubre piso ideales para proyectos de jardinería y paisajismo. Perfectas para jardines residenciales, terrazas y espacios exteriores.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Producto 6 -->
+<div class="product-modal" id="modalMedicinales" role="dialog" aria-modal="true" aria-labelledby="modalMedicinalesTitle">
+  <div class="product-modal-bg" onclick="closeProductModal('modalMedicinales')"></div>
+  <div class="product-modal-content">
+    <button class="product-modal-close" onclick="closeProductModal('modalMedicinales')" aria-label="Cerrar">&times;</button>
+    <h3 class="product-modal-title" id="modalMedicinalesTitle">Plantas Medicinales y Aromáticas</h3>
+    <div class="product-modal-body">
+      <p>Descubre romero, lavanda, menta, albahaca y muchas otras especies medicinales y condimenticias perfectas para aportar aroma, frescura y utilidad natural a cualquier espacio.</p>
     </div>
   </div>
 </div>
