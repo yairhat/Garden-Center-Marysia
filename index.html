@@ -1531,7 +1531,7 @@
       </article>
 
       <!-- Tarjeta 4 -->
-      <article class="product-card">
+      <article class="product-card clickable-card" onclick="openProductModal('modalBonsais')" tabindex="0" role="button" aria-label="Ver más información sobre Bonsáis y Plantas Topiarias" onkeypress="if(event.key==='Enter')openProductModal('modalBonsais')">
         <div class="product-img">
           <img src="sustratos.jpeg"
                alt="Imagen" loading="lazy"/>
@@ -1539,10 +1539,10 @@
         <div class="product-body">
           <h3>Bonsáis y Plantas Topiarias</h3>
           <p>Bonsáis y plantas topiarias que aportan elegancia, armonía y carácter a cualquier espacio..</p>
-          <a href="https://wa.me/525951041204?text=Hola!%20Necesito%20tierra%20y%20sustratos%2C%20%C2%BFqu%C3%A9%20tienen%20disponibles?" target="_blank" rel="noopener noreferrer" class="product-link" aria-label="Preguntar por tierra y sustratos">
-            Cotizar por WhatsApp
+          <span class="product-link">
+            Ver m&aacute;s detalles
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          </span>
         </div>
       </article>
 
@@ -1813,6 +1813,17 @@
   </div>
 </div>
 
+<!-- Modal de Producto 4 -->
+<div class="product-modal" id="modalBonsais" role="dialog" aria-modal="true" aria-labelledby="modalBonsaisTitle">
+  <div class="product-modal-bg" onclick="closeProductModal('modalBonsais')"></div>
+  <div class="product-modal-content">
+    <button class="product-modal-close" onclick="closeProductModal('modalBonsais')" aria-label="Cerrar">&times;</button>
+    <h3 class="product-modal-title" id="modalBonsaisTitle">Bonsáis y Plantas Topiarias</h3>
+    <div class="product-modal-body">
+      <p>Descubre nuestra selección de bonsáis y plantas topiarias, ideales para decoración elegante, jardines, terrazas e interiores. Especies cuidadosamente trabajadas para quienes buscan naturaleza con estilo y personalidad.</p>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════════════════════════════════════════════════
      RESEÑAS
