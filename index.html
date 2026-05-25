@@ -1610,6 +1610,22 @@
         </div>
       </article>
 
+      <!-- Tarjeta 9 -->
+      <article class="product-card clickable-card" onclick="openProductModal('modalSustratos')" tabindex="0" role="button" aria-label="Ver más información sobre Sustratos y Tierra" onkeypress="if(event.key==='Enter')openProductModal('modalSustratos')">
+        <div class="product-img">
+          <img src="Sustratos y Tierra.jpg"
+               alt="Imagen" loading="lazy"/>
+        </div>
+        <div class="product-body">
+          <h3>Sustratos y Tierra</h3>
+          <p>Tierra, sustratos y fertilizantes para el cuidado y crecimiento saludable de tus plantas.</p>
+          <span class="product-link">
+            Ver m&aacute;s detalles
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -1900,6 +1916,18 @@
     <h3 class="product-modal-title" id="modalMacetasTitle">Macetas y Decoración</h3>
     <div class="product-modal-body">
       <p>Encuentra macetas decorativas y funcionales en distintos tamaños, materiales y estilos. Ideales para interiores, jardines, terrazas y proyectos de decoración natural.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Producto 9 -->
+<div class="product-modal" id="modalSustratos" role="dialog" aria-modal="true" aria-labelledby="modalSustratosTitle">
+  <div class="product-modal-bg" onclick="closeProductModal('modalSustratos')"></div>
+  <div class="product-modal-content">
+    <button class="product-modal-close" onclick="closeProductModal('modalSustratos')" aria-label="Cerrar">&times;</button>
+    <h3 class="product-modal-title" id="modalSustratosTitle">Sustratos y Tierra</h3>
+    <div class="product-modal-body">
+      <p>Contamos con sustratos, tierra preparada, composta y fertilizantes ideales para cactus, orquídeas, plantas ornamentales, huertos y todo tipo de especies.</p>
     </div>
   </div>
 </div>
