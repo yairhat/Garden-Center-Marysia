@@ -1499,7 +1499,7 @@
       </article>
 
       <!-- Tarjeta 2 -->
-      <article class="product-card">
+      <article class="product-card clickable-card" onclick="openProductModal('modalOrnamentales')" tabindex="0" role="button" aria-label="Ver más información sobre Plantas Ornamentales" onkeypress="if(event.key==='Enter')openProductModal('modalOrnamentales')">
         <div class="product-img">
           <img src="Plantas Ornamentales.jpg"
                alt="Árboles frutales jóvenes de naranja y limón en vivero" loading="lazy"/>
@@ -1507,10 +1507,10 @@
         <div class="product-body">
           <h3>Plantas Ornamentales</h3>
           <p>Begonias, helechos y plantas ornamentales ideales para interiores y exteriores.</p>
-          <a href="https://wa.me/525951041204?text=Hola!%20Me%20interesan%20los%20%C3%A1rboles%20frutales%2C%20%C2%BFqu%C3%A9%20tienen%20disponibles?" target="_blank" rel="noopener noreferrer" class="product-link" aria-label="Preguntar por árboles frutales">
-            Cotizar por WhatsApp
+          <span class="product-link">
+            Ver m&aacute;s detalles
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+          </span>
         </div>
       </article>
 
@@ -1785,6 +1785,18 @@
     <h3 class="product-modal-title" id="modalArbolesTitle">Árboles Ornamentales y Frutales</h3>
     <div class="product-modal-body">
       <p>Encuentra árboles ornamentales, árboles frutales y variedades cítricas ideales para jardines, huertos y proyectos de paisajismo. Contamos con limoneros, naranjos, aguacates, higueras y muchas más especies seleccionadas para adaptarse a distintos espacios y climas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Producto 2 -->
+<div class="product-modal" id="modalOrnamentales" role="dialog" aria-modal="true" aria-labelledby="modalOrnamentalesTitle">
+  <div class="product-modal-bg" onclick="closeProductModal('modalOrnamentales')"></div>
+  <div class="product-modal-content">
+    <button class="product-modal-close" onclick="closeProductModal('modalOrnamentales')" aria-label="Cerrar">&times;</button>
+    <h3 class="product-modal-title" id="modalOrnamentalesTitle">Plantas Ornamentales</h3>
+    <div class="product-modal-body">
+      <p>Descubre una amplia variedad de plantas ornamentales para interiores y exteriores. Desde begonias y lavandas hasta helechos y especies tropicales, ideales para decorar hogares, jardines, oficinas y terrazas.</p>
     </div>
   </div>
 </div>
