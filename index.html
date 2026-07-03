@@ -82,7 +82,7 @@
       font-weight: 700;
       letter-spacing: .18em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--primary);
       margin-bottom: 12px;
     }
     .label::before { content: '— '; }
@@ -956,18 +956,44 @@
     .stars { display: flex; gap: 4px; margin-bottom: 6px; }
     .star { color: var(--gold); font-size: 20px; }
     .rating-count { font-size: 14px; color: rgba(255,255,255,.5); }
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    .reviews-carousel { position: relative; }
+    .reviews-track {
+      display: flex;
       gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
+    .reviews-track::-webkit-scrollbar { display: none; }
     .review-card {
+      scroll-snap-align: start;
+      flex: 0 0 calc((100% - 40px) / 3);
+      min-width: 0;
       background: rgba(255,255,255,.04);
       border: 1px solid rgba(255,255,255,.08);
       border-radius: var(--radius-xl);
       padding: 28px;
       transition: all .28s;
     }
+    .reviews-nav { display: flex; gap: 12px; justify-content: flex-end; margin-top: 24px; }
+    .reviews-nav-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.15);
+      color: var(--white);
+      font-size: 20px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+    }
+    .reviews-nav-btn:hover:not(:disabled) { background: rgba(200,168,75,.18); border-color: rgba(200,168,75,.4); }
+    .reviews-nav-btn:disabled { opacity: .3; cursor: default; }
     .review-card:hover {
       background: rgba(255,255,255,.07);
       border-color: rgba(200,168,75,.25);
@@ -1153,6 +1179,10 @@
       margin-bottom: 16px;
     }
     .footer-col ul { display: flex; flex-direction: column; gap: 8px; }
+    .footer-col ul li {
+      font-size: 14px;
+      color: rgba(255,255,255,.5);
+    }
     .footer-col ul li a {
       font-size: 14px;
       color: rgba(255,255,255,.5);
@@ -1226,7 +1256,7 @@
       .products-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
-      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .review-card { flex-basis: calc((100% - 20px) / 2); }
       .footer-top { grid-template-columns: 1fr 1fr; }
       .footer-brand { grid-column: span 2; }
     }
@@ -1243,7 +1273,8 @@
       .products-grid { grid-template-columns: 1fr; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-item:nth-child(1) { grid-column: span 2; }
-      .reviews-grid { grid-template-columns: 1fr; }
+      .review-card { flex-basis: 85%; }
+      .reviews-nav { justify-content: center; }
       .contact-grid { grid-template-columns: 1fr; }
       .footer-top { grid-template-columns: 1fr; gap: 28px; }
       .footer-brand { grid-column: auto; }
@@ -1936,8 +1967,7 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════
-     RESEÑAS
-     Edita cada review-card con reseñas reales cuando las tengas
+     RESEÑAS — reseñas reales de Google Maps (carrusel)
 ═══════════════════════════════════════════════════════ -->
 <section id="resenas" class="section-pad" aria-labelledby="reviews-title">
   <div class="container">
@@ -1960,51 +1990,85 @@
       </div>
     </div>
 
-    <div class="reviews-grid">
+    <div class="reviews-carousel">
+      <div class="reviews-track" id="reviewsTrack">
 
-      <!-- EDITA: reemplaza con reseñas reales cuando las tengas -->
-      <article class="review-card">
-        <div class="review-stars" aria-label="5 estrellas">
-          <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
-        </div>
-        <p class="review-text">"Excelente atenci&oacute;n. Me ayudaron a elegir las plantas perfectas para mi jard&iacute;n y todas siguen muy sanas. Sin duda el mejor vivero de Texcoco."</p>
-        <div class="review-author">
-          <div class="review-avatar" aria-hidden="true">M</div>
-          <div>
-            <div class="review-name">Mar&iacute;a G.</div>
-            <div class="review-date">Hace 2 semanas</div>
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 estrellas">
+            <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
           </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <div class="review-stars" aria-label="5 estrellas">
-          <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
-        </div>
-        <p class="review-text">"Compr&eacute; varios &aacute;rboles frutales y llegaron en perfecto estado. El precio muy accesible y la due&ntilde;a muy amable. Ya les comprar&eacute; m&aacute;s plantas."</p>
-        <div class="review-author">
-          <div class="review-avatar" aria-hidden="true">C</div>
-          <div>
-            <div class="review-name">Carlos R.</div>
-            <div class="review-date">Hace 1 mes</div>
+          <p class="review-text">"Cuentan con macetas de barro muy baratas y de muy buena calidad. La atenci&oacute;n de la due&ntilde;a es muy buena y tiene plantas muy bonitas y de buen precio."</p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">A</div>
+            <div>
+              <div class="review-name">Ana Hern&aacute;ndez</div>
+              <div class="review-date">Local Guide &middot; 253 rese&ntilde;as &middot; Editado hace 10 meses</div>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <article class="review-card">
-        <div class="review-stars" aria-label="4 estrellas">
-          <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star" style="opacity:.35">&#9733;</span>
-        </div>
-        <p class="review-text">"Muy buena variedad de plantas y sustratos. Me mandaron fotos por WhatsApp antes de ir y todo estaba como me lo mostraron. Recomendado."</p>
-        <div class="review-author">
-          <div class="review-avatar" aria-hidden="true">L</div>
-          <div>
-            <div class="review-name">Laura V.</div>
-            <div class="review-date">Hace 3 semanas</div>
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 estrellas">
+            <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
           </div>
-        </div>
-      </article>
+          <p class="review-text">"Tiene un gran surtido de flores y plantas de la temporada. El precio es bastante bueno, mejor que la competencia m&aacute;s cercana. Te atienden bien y con paciencia, para que te tomes t&uacute; tiempo para elegir."</p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">J</div>
+            <div>
+              <div class="review-name">Jacqueline V&aacute;zquez</div>
+              <div class="review-date">Local Guide &middot; 31 rese&ntilde;as &middot; Hace 6 a&ntilde;os</div>
+            </div>
+          </div>
+        </article>
 
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 estrellas">
+            <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
+          </div>
+          <p class="review-text">"Hay flores preciosas a los mejores precios que he visto, es un lugar muy bonito y ofrecen una atenci&oacute;n amable."</p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">Y</div>
+            <div>
+              <div class="review-name">Yael Gamy</div>
+              <div class="review-date">Local Guide &middot; 21 rese&ntilde;as &middot; Hace 4 a&ntilde;os</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 estrellas">
+            <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
+          </div>
+          <p class="review-text">"Muy buen servicio y precios accesibles, tienen gran variedad de plantas y acceso para personas en sillas de ruedas."</p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">P</div>
+            <div>
+              <div class="review-name">Phamela Nuev</div>
+              <div class="review-date">Local Guide &middot; 109 rese&ntilde;as &middot; Editado hace 6 a&ntilde;os</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 estrellas">
+            <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
+          </div>
+          <p class="review-text">"Es un excelente lugar, las plantas preciosas y los precios muy buenos, nos atendi&oacute; una se&ntilde;ora super amable y nos explic&oacute; perfectamente las condiciones que son para cada flor y planta, mega recomendable."</p>
+          <div class="review-author">
+            <div class="review-avatar" aria-hidden="true">R</div>
+            <div>
+              <div class="review-name">Reyna De La Parra</div>
+              <div class="review-date">Local Guide &middot; 62 rese&ntilde;as &middot; Hace un a&ntilde;o</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="reviews-nav">
+        <button type="button" class="reviews-nav-btn" id="reviewsPrev" aria-label="Rese&ntilde;a anterior">&#8249;</button>
+        <button type="button" class="reviews-nav-btn" id="reviewsNext" aria-label="Rese&ntilde;a siguiente">&#8250;</button>
+      </div>
     </div>
 
     <div class="google-badge" aria-label="Ver reseñas en Google">
@@ -2363,6 +2427,30 @@
       document.body.style.overflow = '';
     }
   }
+
+  // ── Carrusel de reseñas ──
+  (function () {
+    const track = document.getElementById('reviewsTrack');
+    const prevBtn = document.getElementById('reviewsPrev');
+    const nextBtn = document.getElementById('reviewsNext');
+    if (!track || !prevBtn || !nextBtn) return;
+
+    function cardStep() {
+      const card = track.querySelector('.review-card');
+      const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+      return card ? card.getBoundingClientRect().width + gap : track.clientWidth;
+    }
+    function updateNav() {
+      const maxScroll = track.scrollWidth - track.clientWidth - 1;
+      prevBtn.disabled = track.scrollLeft <= 0;
+      nextBtn.disabled = track.scrollLeft >= maxScroll;
+    }
+    prevBtn.addEventListener('click', () => track.scrollBy({ left: -cardStep(), behavior: 'smooth' }));
+    nextBtn.addEventListener('click', () => track.scrollBy({ left: cardStep(), behavior: 'smooth' }));
+    track.addEventListener('scroll', updateNav, { passive: true });
+    window.addEventListener('resize', updateNav);
+    updateNav();
+  })();
 
   // ── Animaciones de entrada al hacer scroll (Intersection Observer) ──
   const observer = new IntersectionObserver((entries) => {
